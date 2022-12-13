@@ -68,13 +68,3 @@ mv Pictures/ Media/
 # Create new system folders
 mkdir Dev/
 mkdir CAD/
-
-
-
-
-
-
-
-
-
-
