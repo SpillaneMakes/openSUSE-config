@@ -24,7 +24,7 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 
 
 # Install Git, Neofetch, Core Microsoft Fonts, and Media Codecs
-zypper -n in git neofetch fetchmsttfonts ffmpeg gstreamer-plugins-{ugly,libav} vlc-codecs
+zypper -n in neofetch fetchmsttfonts ffmpeg gstreamer-plugins-{ugly,libav} vlc-codecs
 
 # Install recommended graphics drivers
 zypper install-new-recommends --repo nvidia
@@ -33,11 +33,6 @@ zypper install-new-recommends --repo nvidia
 # Lower swappiness value for better performance
 echo 'vm.swappiness=10' | sudo tee /etc/sysctl.d/99-swappiness.conf
 # cat /proc/sys/vm/swappiness
-
-# Configure git for system use
-git config --global init.defaultBranch "master"
-git config --global user.email "Dan@SpillaneMakes.com"
-git config --global user.name "dspil"
 
 # Reload system variables
 sysctl --system

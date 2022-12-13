@@ -46,7 +46,10 @@ kwriteconfig5 --file $USR_HOME/.config/dolphinrc \
 
 # Change dolphin toolbar style to icons only
 kwriteconfig5 --file $USR_HOME/.config/dolphinrc \
-              --group "Toolbar mainToolBar" \
+              --group MainWindow --group "Toolbar mainToolBar" \
+              --key ToolButtonStyle IconOnly
+kwriteconfig5 --file ~/.config/dolphinrc \
+              --group MainWindow --group "Toolbar mainToolBar" \
               --key ToolButtonStyle IconOnly
 
 
@@ -68,3 +71,5 @@ mv Pictures/ Media/
 # Create new system folders
 mkdir Dev/
 mkdir CAD/
+
+echo """	********* Script Completed *********	"""

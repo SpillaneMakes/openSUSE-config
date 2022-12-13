@@ -65,3 +65,5 @@ wget https://raw.githubusercontent.com/EliverLara/Nordic/master/kde/colorschemes
 kwriteconfig5 --file $USR_HOME/.config/kdeglobals \
               --group General \
               --key ColorScheme BreathDark
+
+echo """	********* Script Completed *********	"""
