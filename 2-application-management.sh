@@ -5,8 +5,9 @@ cd $USR_HOME
 
 
 # Uninstall unnecessary Packages
-zypper -n rm -u konversation opensuse_welcome kcm_tablet
-zypper -n rm -u discover digikam tigervnc xscreensaver
+zypper -n rm -u konversation opensuse-welcome kcm_tablet
+zypper -n rm -u digikam tigervnc xscreensaver
+zypper -n rm discover
 
 
 # Add Microsoft repositories
@@ -25,7 +26,7 @@ zypper --gpg-auto-import-keys refresh
 zypper -n in \
 	nodejs-default code sublime-text sublime-merge podman \
 	filelight gparted qbittorrent rpi-imager kdeconnect-kde \
-	inkscape blender PrusaSlicer obs-studio
+	inkscape blender PrusaSlicer virtualbox
 
 # Update system and packages
 zypper -n dup --allow-vendor-change
@@ -41,10 +42,13 @@ flatpak install -y flathub \
 	com.getpostman.Postman \
 	org.ferdium.Ferdium \
 	com.spotify.Client \
+	net.meshlab.MeshLab \
 
 
 # Define file type associations
 xdg-mime default sublime_text.desktop text/plain
 xdg-mime default sublime_text.desktop text/markdown
+
+neofetch
 
 echo " ********* Script Completed ********* "
