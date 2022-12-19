@@ -1,5 +1,5 @@
 # Change the static hostname
-hostnamectl set-hostname 'dspil'
+hostnamectl set-hostname 'precision5750'
 
 # Add /home subvolume to Snapper
 snapper -c home create-config /home
@@ -19,15 +19,17 @@ zypper --gpg-auto-import-keys addrepo -f https://download.nvidia.com/opensuse/tu
 zypper --gpg-auto-import-keys refresh
 zypper -n dup --allow-vendor-change
 
-# Add remote repository to flatpak
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-
-# Install Git, Neofetch, Core Microsoft Fonts, and Media Codecs
-zypper -n in neofetch fetchmsttfonts ffmpeg gstreamer-plugins-{ugly,libav} vlc-codecs
+# Install system utilities, Core Microsoft Fonts, and Media Codecs
+zypper -n in \
+	flatpak htop iotop neofetch fetchmsttfonts \
+	ffmpeg vlc-codecs gstreamer-plugins-{ugly,libav}
 
 # Install recommended graphics drivers
 zypper install-new-recommends --repo nvidia
+
+# Add flathub remote repository to flatpak
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 
 # Lower swappiness value for better performance
@@ -38,8 +40,7 @@ echo 'vm.swappiness=10' | sudo tee /etc/sysctl.d/99-swappiness.conf
 sysctl --system
 
 
-echo """	********* Script Completed *********	"""
-
+# Print completed script output
 hstnm=$(hostnamectl | grep "Static hostname:")
 swpi=$(cat /proc/sys/vm/swappiness)
 echo "	$hstnm"
@@ -48,3 +49,5 @@ echo " 	 Swappiness: $swpi"
 neofetch
 
 zypper lr -P
+
+echo "	********* Script Completed *********	"

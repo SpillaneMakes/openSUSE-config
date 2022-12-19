@@ -1,5 +1,7 @@
 # Define home directory path from sudo user
 USR_HOME="$(getent passwd $SUDO_USER | cut -d: -f6)"
+cd $USR_HOME
+
 
 # Include delete command in service menu
 kwriteconfig5 --file $USR_HOME/.config/kdeglobals \
@@ -48,9 +50,6 @@ kwriteconfig5 --file $USR_HOME/.config/dolphinrc \
 kwriteconfig5 --file $USR_HOME/.config/dolphinrc \
               --group MainWindow --group "Toolbar mainToolBar" \
               --key ToolButtonStyle IconOnly
-kwriteconfig5 --file ~/.config/dolphinrc \
-              --group MainWindow --group "Toolbar mainToolBar" \
-              --key ToolButtonStyle IconOnly
 
 
 # Delete unnecessary system folders
@@ -59,10 +58,10 @@ rm -d $USR_HOME/Templates
 rm -d $USR_HOME/Music
 
 # Insert custom dolphin toolbar
-mkdir -p $USR_HOME/.local/share/kxmlgui5/dolphin/; mv ./ui-config/dolphinui.rc $_
+mkdir -p $USR_HOME/.local/share/kxmlgui5/dolphin/ ; mv -f $USR_HOME/Desktop/openSUSE-config/ui-config/dolphinui.rc $_
 
 # Update dolphin panel with new system folders
-mv ./ui-config/user-places.xbel $USR_HOME/.local/share/
+mv -f $USR_HOME/Desktop/openSUSE-config/ui-config/user-places.xbel $USR_HOME/.local/share/
 
 # Rename pictures folder
 cd $USR_HOME
@@ -72,4 +71,4 @@ mv Pictures/ Media/
 mkdir Dev/
 mkdir CAD/
 
-echo """	********* Script Completed *********	"""
+echo "	********* Script Completed *********	"
