@@ -39,7 +39,6 @@ flatpak install -y flathub \
 	com.discordapp.Discord \
 	de.haeckerfelix.Shortwave \
 	com.github.tchx84.Flatseal \
-	com.getpostman.Postman \
 	org.ferdium.Ferdium \
 	com.spotify.Client \
 	net.meshlab.MeshLab \
